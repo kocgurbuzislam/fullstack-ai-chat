@@ -1,0 +1,282 @@
+:root {
+  --bg: #0b0f17;
+  /* sayfa arka planı */
+  --panel: #121826;
+  /* kart/panel zemin */
+  --muted: #94a3b8;
+  /* yardımcı metin */
+  --text: #e2e8f0;
+  /* ana metin */
+  --brand: #3b82f6;
+  /* aksiyon rengi */
+  --border: #1f2937;
+  /* çizgiler */
+  --pos: #16a34a;
+  --neu: #64748b;
+  --neg: #ef4444;
+}
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body,
+#root {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif
+}
+
+.chat {
+  width: min(860px, 100%);
+}
+
+.app {
+  margin: 0 auto;
+  display: flex;
+  height: 100dvh;
+  max-width: none;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(18, 24, 38, .7);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+}
+
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center
+}
+
+.brand .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand)
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: .2px
+}
+
+.logout {
+  background: transparent;
+  border: 1px solid #ffffff22;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: .2s;
+  font-size: 12px
+}
+
+.logout:hover {
+  background: #ffffff10
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.panel {
+  height: calc(100dvh - 56px - 32px);
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.messages {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer{
+  position: sticky; bottom: 0;
+  background:#0c1321; border-top:1px solid var(--border);
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end
+}
+
+.me {
+  justify-content: flex-end
+}
+
+.other {
+  justify-content: flex-start
+}
+
+.bubble {
+  max-width: 68%;
+  background: #0f172a;
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 12px;
+  line-height: 1.35;
+  font-size: 14px;
+}
+
+.bubble.me {
+  background: #0b1222
+}
+
+.meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted)
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  letter-spacing: .2px
+}
+
+.badge.pos {
+  background: color-mix(in oklab, var(--pos) 15%, transparent);
+  color: #bbf7d0;
+  border-color: color-mix(in oklab, var(--pos) 40%, #000)
+}
+
+.badge.neu {
+  background: color-mix(in oklab, var(--neu) 15%, transparent);
+  color: #cbd5e1;
+  border-color: color-mix(in oklab, var(--neu) 35%, #000)
+}
+
+.badge.neg {
+  background: color-mix(in oklab, var(--neg) 12%, transparent);
+  color: #fecaca;
+  border-color: color-mix(in oklab, var(--neg) 40%, #000)
+}
+
+.inputBar {
+  position: static;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  background: #0c1321;
+}
+
+.input {
+  flex: 1;
+  background: #0a101c;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 12px 14px;
+  outline: none;
+}
+
+.send {
+  background: var(--brand);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 0 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .15s;
+  height: 44px
+}
+
+.send:hover {
+  filter: brightness(1.08)
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 0 12px 12px
+}
+
+.empty {
+  opacity: .65;
+  text-align: center;
+  padding: 48px 12px
+}
+
+.nickWrap {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 24px
+}
+
+.nickCard {
+  width: min(420px, 92%);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .35)
+}
+
+.nickCard h2 {
+  margin: 0 0 8px
+}
+
+.nickCard p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 13px
+}
+
+.nickInput {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0a101c;
+  color: var(--text)
+}
+
+.nickBtn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer
+}
