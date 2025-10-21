@@ -3,7 +3,12 @@ using ChatApi.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http.Json;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+var dbPath = Environment.GetEnvironmentVariable("DB_PATH") ?? "chat.db";
+builder.Services.AddDbContext<AppDb>(opt =>
+    opt.UseSqlite($"Data Source={dbPath}"));
 
 // EF Core + SQLite
 builder.Services.AddDbContext<AppDb>(opt =>
@@ -19,14 +24,14 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p => p
     .AllowAnyMethod()
 ));
 
-var app = builder.Build(); // 🔧 <— burada Build() olmalı
+var app = builder.Build(); 
 
 app.UseCors();
 
 // Health
 app.MapGet("/", () => Results.Ok(new { ok = true }));
 
-// 1) Kullanıcı oluştur
+//Kullanıcı oluştur
 app.MapPost("/api/users", async (AppDb db, User u) =>
 {
     if (string.IsNullOrWhiteSpace(u.Nickname)) return Results.BadRequest("nickname required");
@@ -35,7 +40,7 @@ app.MapPost("/api/users", async (AppDb db, User u) =>
     return Results.Created($"/api/users/{u.Id}", u);
 });
 
-// 2) Mesajları listele (opsiyonel since & limit)
+
 app.MapGet("/api/messages", async (AppDb db, DateTime? since, int? limit) =>
 {
     var q = db.Messages.Include(m => m.User).OrderBy(m => m.CreatedAt).AsQueryable();
@@ -56,8 +61,7 @@ app.MapGet("/api/messages", async (AppDb db, DateTime? since, int? limit) =>
     return Results.Ok(data);
 });
 
-// 3) Mesaj gönder + AI analizi
-// 3) Mesaj gönder + AI analizi
+
 app.MapPost("/api/messages", async (AppDb db, IHttpClientFactory f, IConfiguration cfg, Message m) =>
 {
     var user = await db.Users.FindAsync(m.UserId);
@@ -96,11 +100,17 @@ app.MapPost("/api/messages", async (AppDb db, IHttpClientFactory f, IConfigurati
     catch (Exception ex)
     {
         Console.WriteLine("[AI] call failed: " + ex.Message);
-        // NEUTRAL kalsın (MVP)
+        
     }
 
     return Results.Ok(m);
 });
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDb>();
+    db.Database.Migrate();
+}
 
 app.Run();
 
