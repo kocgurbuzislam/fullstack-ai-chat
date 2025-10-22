@@ -111,8 +111,10 @@ dotnet ef database update
 dotnet run
 ```
 
-API localhost:5000 üzerinde çalışır.  
-**Render** ortamında barındırma için `appsettings.json` dosyasına environment değişkenleri eklenmiştir.
+API lokal geliştirme ortamında `http://localhost:5000` üzerinde çalışır.  
+Canlı ortamda ise **Render** üzerinde barındırılır ve şu adresten erişilebilir:  
+👉 https://fullstack-ai-chat-edry.onrender.com
+
 
 ---
 
