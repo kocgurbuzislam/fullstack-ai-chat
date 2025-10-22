@@ -118,9 +118,12 @@ body {
   flex-direction: column;
   gap: 12px;
 }
-.footer{
-  position: sticky; bottom: 0;
-  background:#0c1321; border-top:1px solid var(--border);
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  background: #0c1321;
+  border-top: 1px solid var(--border);
 }
 
 .row {
@@ -235,22 +238,28 @@ body {
 }
 
 .nickWrap {
+  position: fixed;
+  /* ekrana sabitle */
+  inset: 0;
+  /* top/right/bottom/left: 0 */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: #0f172a; /* karanlık arka plan */
+  background-color: #0f172a;
+  z-index: 9999;
+  /* her şeyin üstünde olsun */
 }
+
 .nickCard {
   background: #1e293b;
   padding: 2.5rem 2rem;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  width: 380px;
-  max-width: 90%;
+  width: 420px;
+  /* biraz büyüt */
+  max-width: 92%;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .nickCard:hover {
