@@ -7,18 +7,18 @@ Hazırlayan: İslam Koçgürbüz
 Bu proje, kullanıcıların sohbet ederek mesajlaşabildiği ve her mesajın AI tarafından duygu analizi (Positive / Neutral / Negative) ile etiketlendiği tam yığın bir chat uygulamasıdır.
 Tüm sistem; React (Web), React Native (Mobil), .NET Core (Backend) ve Hugging Face Spaces (AI Servisi) katmanlarından oluşmaktadır.
 
-🌍 Canlı Demo Linkleri
-Katman	Platform	Link
-💻 Web (Frontend)	Vercel	https://fullstack-ai-chat-n3zas7paz-islams-projects-0e144e92.vercel.app
+🌍 Canlı Demo Linkleri</br>
 
-⚙️ Backend API	Render	https://fullstack-ai-chat-edry.onrender.com
+💻 Web (Frontend)	Vercel:	https://fullstack-ai-chat-n3zas7paz-islams-projects-0e144e92.vercel.app</br>
 
-🧠 AI Servisi	Hugging Face Spaces	https://kocgurbuz-sentiment-api.hf.space
+⚙️ Backend API	Render:	https://fullstack-ai-chat-edry.onrender.com </br>
 
-📱 Mobil APK	Android Build (Drive)	https://drive.google.com/file/d/1_eBBfZKZjp4ieeQhR1YGsbmBS71kp0I3/view?usp=sharing
-🧩 Proje Mimarisi
-Frontend (React Web)   ─┐
-                        │   →  Backend API (.NET Core)
+🧠 AI Servisi Hugging Face Spaces:	https://kocgurbuz-sentiment-api.hf.space</br>
+
+📱 Mobil APK	Android Build (Drive):	https://drive.google.com/file/d/1_eBBfZKZjp4ieeQhR1YGsbmBS71kp0I3/view?usp=sharing</br>
+🧩 Proje Mimarisi</br>
+Frontend (React Web)   ─┐</br>
+                        │   →  Backend API (.NET Core)</br>
 Mobil (React Native) ───┘
                              ↓
                       AI Servisi (Hugging Face)
