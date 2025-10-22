@@ -87,8 +87,8 @@ export default function App() {
     return (
       <div className="nickWrap">
         <div className="nickCard">
-          <h2>Takma adını seç</h2>
-          <p>2–20 karakter. Bu isim sohbet listesinde görünecek.</p>
+          <h2>Choose a nickname</h2>
+          <p>2–20 characters. This name will appear in the chat list.</p>
           <form onSubmit={async (e) => {
             e.preventDefault();
             const raw = e.currentTarget.nn.value || "";
@@ -101,8 +101,8 @@ export default function App() {
               setUserId(r.data.id); S.set("uid", r.data.id);
             } catch { }
           }}>
-            <input name="nn" className="nickInput" placeholder="ör. kerem19" maxLength={20} autoFocus />
-            <button className="nickBtn" type="submit">Devam</button>
+            <input name="nn" className="nickInput" placeholder="e.g. kerem19" maxLength={20} autoFocus />
+            <button className="nickBtn" type="submit">Continue</button>
           </form>
         </div>
       </div>
