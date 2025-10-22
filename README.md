@@ -161,7 +161,4 @@ Frontend → Vercel, Backend → Render, AI → Hugging Face
 ✔️ Veritabanı bağlantısı SQLite ile
 ✔️ Kullanıcı oturumları ve sentiment analizi sorunsuz
 
-Hazırlayan:
-👨‍💻 İslam Koçgürbüz
-Full Stack & AI Developer Candidate
-📆 Ekim 2025
+
