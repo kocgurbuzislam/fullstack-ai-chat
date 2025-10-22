@@ -32,13 +32,25 @@ app.UseCors();
 app.MapGet("/", () => Results.Ok(new { ok = true }));
 
 //Kullanıcı oluştur
-app.MapPost("/api/users", async (AppDb db, User u) =>
+app.MapPost("/api/users", async (AppDb db, User dto) =>
 {
-    if (string.IsNullOrWhiteSpace(u.Nickname)) return Results.BadRequest("nickname required");
-    db.Users.Add(u);
+    var nickname = dto.Nickname?.Trim();
+    if (string.IsNullOrEmpty(nickname))
+        return Results.BadRequest(new { error = "Nickname boş olamaz." });
+
+    var existing = await db.Users
+        .AsNoTracking()
+        .FirstOrDefaultAsync(u => u.Nickname.ToLower() == nickname.ToLower());
+
+    if (existing != null)
+        return Results.Ok(existing);
+
+    var user = new User { Nickname = nickname, CreatedAt = DateTime.UtcNow };
+    db.Users.Add(user);
     await db.SaveChangesAsync();
-    return Results.Created($"/api/users/{u.Id}", u);
+    return Results.Ok(user);
 });
+
 
 
 app.MapGet("/api/messages", async (AppDb db, DateTime? since, int? limit) =>

@@ -7,9 +7,9 @@ console.log("API =", import.meta.env.VITE_API_BASE);
 
 const API = import.meta.env.VITE_API_BASE;
 const S = {
-  get: (k) => window.sessionStorage.getItem(k),
-  set: (k, v) => window.sessionStorage.setItem(k, v),
-  del: (k) => window.sessionStorage.removeItem(k),
+  get: (k) => window.localStorage.getItem(k),
+  set: (k, v) => window.localStorage.setItem(k, v),
+  del: (k) => window.localStorage.removeItem(k),
   clearUser: () => { S.del("nn"); S.del("uid"); }
 };
 
@@ -122,10 +122,18 @@ export default function App() {
         </div>
         <button
           className="logout"
-          onClick={() => { S.clearUser(); setNickname(""); setUserId(""); }}
+          onClick={() => {
+            S.clearUser();
+            setNickname("");
+            setUserId("");
+            setText("");      
+            setMsgs([]);      //mesaj geçmişi
+            setLastAt(null);   
+          }}
         >
           Çıkış yap
         </button>
+
       </header>
 
       <main className="main">
