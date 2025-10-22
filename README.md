@@ -79,8 +79,10 @@ fullstack-ai-chat/
  </p>
 
 # Mobil
-<p align="center"> ![WhatsApp Görsel 2025-10-22 saat 23 10 11_f2183cfb](https://github.com/user-attachments/assets/141dc8c9-7eb5-4950-a6ec-ae8006c9f533)
-</p> <p align="center"> ![WhatsApp Görsel 2025-10-22 saat 23 10 11_1f2e07d7](https://github.com/user-attachments/assets/59cc503d-ad8d-4b7e-ad49-eda8b8078c40)
+<p align="center"> <img width="386" height="834" alt="image" src="https://github.com/user-attachments/assets/71bf0476-2dbe-44a1-bd7f-e438053d0992" />
+
+</p> <p align="center"> <img width="383" height="833" alt="image" src="https://github.com/user-attachments/assets/cb753592-906e-4c0f-b49f-e3a1294dff77" />
+
  </p>
 
 
