@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./app.css";
 
+console.log("API =", import.meta.env.VITE_API_BASE);
+
+
 const API = import.meta.env.VITE_API_BASE;
 const S = {
   get: (k) => window.sessionStorage.getItem(k),
