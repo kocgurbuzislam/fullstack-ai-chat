@@ -19,10 +19,10 @@ Tüm sistem; React (Web), React Native (Mobil), .NET Core (Backend) ve Hugging F
 🧩 Proje Mimarisi</br>
 Frontend (React Web)   ─┐</br>
                         │   →  Backend API (.NET Core)</br>
-Mobil (React Native) ───┘
-                             ↓
-                      AI Servisi (Hugging Face)
-                             ↓
+Mobil (React Native) ───┘</br>
+                             ↓</br>
+                      AI Servisi (Hugging Face)</br>
+                             ↓</br>
                           SQLite DB
 
 
