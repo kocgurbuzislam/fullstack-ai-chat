@@ -161,7 +161,7 @@ Mobil uygulama da aynı API endpoint’lerini kullanır.
 
 ## 🧩 Elle Yazılan Kısımlar (Manuel Kodlama)
 
-Projede AI yardımı olmadan **tamamen manuel** yazılmış bölümler bulunmaktadır.
+Projede AI yardımı olmadan **tamamen manuel** yazılmış bölümler bulunmaktadır. AI nin yazdığı kodlar ise detaylıca incelenip projeye eklenmiştir.
 
 ### 🟦 Backend (.NET Core)
 
