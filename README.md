@@ -19,7 +19,7 @@ Her mesaj gönderildiğinde backend üzerinden **Hugging Face API**’sine istek
 | 🌍 **Web (Vercel)** | [https://fullstack-ai-chat-n3zas7paz-islams-projects-0e144e92.vercel.app](https://fullstack-ai-chat-n3zas7paz-islams-projects-0e144e92.vercel.app) |
 | 🧠 **AI Servisi (Hugging Face)** | [https://kocgurbuz-sentiment-api.hf.space](https://kocgurbuz-sentiment-api.hf.space) |
 | ⚙️ **Backend (Render)** | [https://fullstack-ai-chat-edry.onrender.com](https://fullstack-ai-chat-edry.onrender.com) |
-| 📱 **Mobil APK (Android)** | [https://drive.google.com/file/d/1_eBBfZKZjp4ieeQhR1YGsbmBS71kp0I3/view?usp=sharing](https://drive.google.com/file/d/1_eBBfZKZjp4ieeQhR1YGsbmBS71kp0I3/view?usp=sharing) |
+| 📱 **Mobil APK (Android)** | [https://drive.google.com/file/d/13v99uKHoRvxtLU5dvsxXYErGg1uAYT9e/view?usp=sharing](https://drive.google.com/file/d/13v99uKHoRvxtLU5dvsxXYErGg1uAYT9e/view?usp=sharing) |
 
 ---
 
