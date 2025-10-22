@@ -1,164 +1,209 @@
-### Full Stack AI Chat
+# 💬 Full Stack + AI Chat Uygulaması
 
-Hazırlayan: İslam Koçgürbüz
+Kullanıcıların anlık mesajlaşabildiği, her mesajın **AI destekli duygu analizi (Sentiment Analysis)** ile etiketlendiği tam kapsamlı bir **Full Stack Chat Uygulaması**.  
+Uygulama hem **web (React)** hem **mobil (React Native)** tarafında çalışır ve **.NET Backend** ile **Python tabanlı AI servisine** bağlıdır.
 
-## Proje Özeti
+---
 
-Bu proje, kullanıcıların sohbet ederek mesajlaşabildiği ve her mesajın AI tarafından duygu analizi (Positive / Neutral / Negative) ile etiketlendiği tam yığın bir chat uygulamasıdır.
-Tüm sistem; React (Web), React Native (Mobil), .NET Core (Backend) ve Hugging Face Spaces (AI Servisi) katmanlarından oluşmaktadır.
+## 🧠 Proje Özeti
 
-🌍 Canlı Demo Linkleri</br>
+Kullanıcılar takma ad (nickname) ile giriş yapar.  
+Her mesaj gönderildiğinde backend üzerinden **Hugging Face API**’sine istek atılır, mesajın duygu durumu (pozitif, nötr, negatif) belirlenir ve sonuç anlık olarak arayüzde gösterilir.
 
-💻 Web (Frontend)	Vercel:	https://fullstack-ai-chat-n3zas7paz-islams-projects-0e144e92.vercel.app</br>
+---
 
-⚙️ Backend API	Render:	https://fullstack-ai-chat-edry.onrender.com </br>
+## 🌐 Canlı Demo Bağlantıları
 
-🧠 AI Servisi Hugging Face Spaces:	https://kocgurbuz-sentiment-api.hf.space</br>
+| Platform | Link |
+|-----------|------|
+| 🌍 **Web (Vercel)** | [https://fullstack-ai-chat-n3zas7paz-islams-projects-0e144e92.vercel.app](https://fullstack-ai-chat-n3zas7paz-islams-projects-0e144e92.vercel.app) |
+| 🧠 **AI Servisi (Hugging Face)** | [https://kocgurbuz-sentiment-api.hf.space](https://kocgurbuz-sentiment-api.hf.space) |
+| ⚙️ **Backend (Render)** | [https://fullstack-ai-chat-edry.onrender.com](https://fullstack-ai-chat-edry.onrender.com) |
+| 📱 **Mobil APK (Android)** | [https://drive.google.com/file/d/1_eBBfZKZjp4ieeQhR1YGsbmBS71kp0I3/view?usp=sharing](https://drive.google.com/file/d/1_eBBfZKZjp4ieeQhR1YGsbmBS71kp0I3/view?usp=sharing) |
 
-📱 Mobil APK	Android Build (Drive):	https://drive.google.com/file/d/1_eBBfZKZjp4ieeQhR1YGsbmBS71kp0I3/view?usp=sharing</br>
-🧩 Proje Mimarisi</br>
-Frontend (React Web)   ─┐</br>
-                        │   →  Backend API (.NET Core)</br>
-Mobil (React Native) ───┘</br>
-                             ↓</br>
-                      AI Servisi (Hugging Face)</br>
-                             ↓</br>
-                          SQLite DB
+---
 
+## 📁 Güncel Klasör Yapısı
 
-## Veri akışı:
+```
+fullstack-ai-chat/
+│
+├── ai-service/                  # AI servis (Hugging Face Spaces)
+│   ├── app.py                   # Gradio tabanlı sentiment API
+│   ├── requirements.txt         # Python bağımlılıkları
+│   ├── Dockerfile
+│   └── README.md
+│
+├── backend/                     # .NET 8 Web API (Render üzerinde)
+│   └── ChatApi/
+│       ├── Data/
+│       │   └── AppDb.cs         # SQLite veritabanı bağlantısı
+│       ├── Models/
+│       │   ├── User.cs          # Kullanıcı modeli (unique nickname)
+│       │   └── Message.cs       # Mesaj modeli
+│       ├── Migrations/          # EF Core migration dosyaları
+│       ├── Controllers/
+│       │   ├── UserController.cs
+│       │   └── MessageController.cs
+│       ├── appsettings.json
+│       ├── ChatApi.csproj
+│       ├── Dockerfile
+│       └── Program.cs
+│
+├── frontend/
+│   └── react-chat/
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── App.jsx          # Ana bileşen (chat arayüzü)
+│       │   ├── main.jsx
+│       │   └── app.css, index.css
+│       ├── .env, .env.production
+│       ├── vite.config.js
+│       └── package.json
+│
+└── mobile/
+    ├── src/
+    │   └── api.js               # Mobil istek yöneticisi
+    ├── App.tsx                  # React Native giriş noktası
+    ├── app.json, index.js
+    ├── babel.config.js
+    ├── metro.config.js
+    └── package.json
+```
 
-Kullanıcı mesaj yazar → Backend’e gönderilir
+---
 
-Backend mesajı kaydeder ve AI servisine yollar
+## 🧱 Kullanılan Teknolojiler
 
-AI sonucu (pozitif, nötr, negatif) döndürür
+| Katman | Teknoloji |
+|--------|------------|
+| **Frontend (Web)** | React + Vite + Axios + CSS |
+| **Frontend (Mobil)** | React Native CLI + AsyncStorage |
+| **Backend** | ASP.NET Core 8 + Entity Framework Core + SQLite |
+| **AI Servisi** | Python + Gradio + Transformers (Hugging Face) |
+| **Deployment** | Vercel (Web) + Render (API) + HF Spaces (AI) |
+| **Veritabanı** | SQLite (otomatik migration destekli) |
 
-Backend sonucu DB’ye yazar → Frontend’e gerçek zamanlı gösterilir
+---
 
-⚙️ Klasör Yapısı
-/frontend    → React (Vite) web arayüzü
-/mobile      → React Native (CLI) mobil uygulama
-/backend     → .NET 8 Web API + EF Core + SQLite
-/ai-service  → Hugging Face Spaces (transformers + gradio)
+## ⚙️ Kurulum Adımları
 
-🧱 Kurulum Adımları
-1️⃣ Ortak Gereksinimler
+### 1️⃣ Backend (.NET API)
 
-Node.js 20+
-
-.NET SDK 8.0+
-
-Python 3.10+
-
-Android Studio (React Native CLI için)
-
-Git ve npm yüklü olmalı
-
-2️⃣ Backend (.NET Core)
+```bash
 cd backend/ChatApi
 dotnet restore
 dotnet ef database update
 dotnet run
+```
 
+API localhost:5000 üzerinde çalışır.  
+**Render** ortamında barındırma için `appsettings.json` dosyasına environment değişkenleri eklenmiştir.
 
-📦 Çalışma adresi: http://localhost:5259
+---
 
-appsettings.json veya .env:
+### 2️⃣ AI Servisi (Python)
 
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Data Source=chat.db"
-  },
-  "AiServiceUrl": "https://kocgurbuz-sentiment-api.hf.space/analyze"
-}
+```bash
+cd ai-service
+pip install -r requirements.txt
+python app.py
+```
 
-3️⃣ AI Servisi (Hugging Face)
+Bu servis Hugging Face Spaces üzerinde yayınlanmıştır.  
+Girilen metin `transformers` modeli ile analiz edilip JSON formatında sonuç döner.
 
-Hugging Face Spaces ortamında gradio ve transformers kullanıldı.
+---
 
-analyze endpoint’i POST isteği ile JSON alır:
+### 3️⃣ Web (React)
 
-{ "text": "this is amazing" }
-
-
-Dönüş:
-
-{ "label": "POSITIVE", "score": 0.98 }
-
-4️⃣ Web (React Vite)
-cd frontend
+```bash
+cd frontend/react-chat
 npm install
 npm run dev
+```
 
+`.env.production` dosyasında backend ve AI API URL'leri bulunur:
 
-.env
+```
+VITE_API_URL=https://fullstack-ai-chat-edry.onrender.com
+VITE_AI_URL=https://kocgurbuz-sentiment-api.hf.space
+```
 
-VITE_API_BASE=http://localhost:5259
+---
 
+### 4️⃣ Mobil (React Native CLI)
 
-.env.production
-
-VITE_API_BASE=https://fullstack-ai-chat-edry.onrender.com
-
-5️⃣ Mobil (React Native CLI)
+```bash
 cd mobile
 npm install
 npx react-native run-android
+```
+
+APK dosyası ayrıca Google Drive’da paylaşılmıştır.  
+Mobil uygulama da aynı API endpoint’lerini kullanır.
+
+---
+
+## 🧩 Elle Yazılan Kısımlar (Manuel Kodlama)
+
+Projede AI yardımı olmadan **tamamen manuel** yazılmış bölümler bulunmaktadır.
+
+### 🟦 Backend (.NET Core)
+
+**`UserController.cs`**
+- Takma adın (`nickname`) **benzersiz (unique)** olmasını sağlayan kontrol.  
+- Eğer kullanıcı zaten kayıtlıysa, aynı ID ile döndürülür.  
+
+**`MessageController.cs`**
+- Her gelen mesajı AI servisine `HttpClient` üzerinden gönderir.  
+- Dönen sentiment ve skor verilerini veritabanına kaydeder.  
+- Asenkron işlem yönetimi (async/await) manuel yazılmıştır.
+
+**`AppDb.cs`**
+- Entity Framework Core yapılandırması.  
+- `DbSet<User>` ve `DbSet<Message>` koleksiyonları elle oluşturulmuştur.  
+
+---
+
+### 🟩 Web (React - `App.jsx`)
+- `createUser()` fonksiyonu tamamen el ile yazılmıştır.  
+  - Nickname kontrolü, localStorage kaydı, backend isteği yapılır.  
+- `useEffect` ile otomatik mesaj güncelleme (polling) ve auto-scroll yönetimi.  
+- Klavye açılışında/gizlenmesinde son mesaja kaydırma mantığı.  
+- Logout işlemi sonrası input sıfırlama ve session temizleme.  
+
+---
+
+### 🟨 Mobil (React Native - `App.tsx`)
+- Kullanıcı oturum bilgileri `AsyncStorage` ile saklanır.  
+- Giriş sonrası API’ye bağlanma, mesaj gönderimi, liste güncelleme işlemleri tamamen manuel olarak tanımlanmıştır.  
+- Klavye açılınca görünümün yukarı kayması (KeyboardAvoidingView) optimize edilmiştir.
+
+---
+
+### 🟥 AI Servisi (`app.py`)
+- Hugging Face modeli (`distilbert-base-uncased-finetuned-sst-2-english`) ile sentiment analizi yapılır.  
+- Gradio API wrapper elle yapılandırılmıştır.  
+- Modele gelen text parametresi direkt işlenip JSON olarak döner.  
+
+---
+
+## 🧭 Mimari Akış
+
+```
+Kullanıcı (Web/Mobil)
+      ↓
+    Backend (.NET)
+      ↓
+AI Servisi (Python - Hugging Face)
+      ↓
+Sentiment Sonucu + SQLite’e Kaydetme
+      ↓
+Ekrana Anında Gösterim (React/React Native)
+```
+
+---
 
 
-APK oluşturmak için:
-
-cd android
-./gradlew assembleRelease
-
-
-APK yolu:
-
-mobile/android/app/build/outputs/apk/release/app-release.apk
-
-🧠 Kullanılan AI & Teknolojiler
-Katman	Teknoloji
-Frontend	React (Vite), Axios
-Mobil	React Native CLI
-Backend	.NET 8, Entity Framework Core, SQLite
-AI	Hugging Face Transformers, Gradio
-Hosting	Vercel, Render, Hugging Face Spaces
-🧾 Kod Hakimiyeti Kanıtı
-
-Projede aşağıdaki kısımlar tamamen manuel olarak tarafımdan yazılmıştır:
-
-.NET Core API içindeki MessagesController.cs ve UserController.cs
-
-EF Core migration işlemleri ve veritabanı şeması (Users, Messages)
-
-React ve React Native tarafında auto-scroll, nickname kaydı, sentiment rozetleri ve çıkış yönetimi
-
-CSS / UI düzenlemeleri
-
-AI yardımı yalnızca tasarımsal CSS düzenlerinde ve açıklama metinlerinde alınmıştır.
-
-📸 Ekran Görüntüleri
-Web	Mobil
-
-	
-💡 Mimari Özeti
-
-Kullanıcı oturumu: sessionStorage (web) ve AsyncStorage (mobil)
-
-AI entegrasyonu: Backend → Hugging Face endpoint
-
-Mesajlaşma: Backend’de polling ile her 3 sn’de güncelleme
-
-Deploy zinciri:
-Frontend → Vercel, Backend → Render, AI → Hugging Face
-
-✅ Durum Özeti
-
-✔️ AI servisi aktif
-✔️ Backend API Render üzerinde çalışıyor
-✔️ Web & Mobil arayüzleri canlı
-✔️ Veritabanı bağlantısı SQLite ile
-✔️ Kullanıcı oturumları ve sentiment analizi sorunsuz
-
-
+Bu proje **açık kaynaklıdır** ve yalnızca **akademik / eğitim amaçlı** geliştirilmiştir.
