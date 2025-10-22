@@ -31,25 +31,43 @@ app.UseCors();
 // Health
 app.MapGet("/", () => Results.Ok(new { ok = true }));
 
+app.MapGet("/api/users/by-nickname", async (AppDb db, string nickname) =>
+{
+    var nn = (nickname ?? "").Trim();
+    if (nn.Length < 2 || nn.Length > 20)
+        return Results.BadRequest(new { error = "Nickname must be 2..20 chars." });
+
+    var user = await db.Users
+        .AsNoTracking()
+        .FirstOrDefaultAsync(u => u.Nickname.ToLower() == nn.ToLower());
+
+    return user is null ? Results.NotFound() : Results.Ok(user);
+});
+
+
 //Kullanıcı oluştur
 app.MapPost("/api/users", async (AppDb db, User dto) =>
 {
-    var nickname = dto.Nickname?.Trim();
-    if (string.IsNullOrEmpty(nickname))
-        return Results.BadRequest(new { error = "Nickname boş olamaz." });
+    var nn = dto.Nickname?.Trim();
+    if (string.IsNullOrWhiteSpace(nn) || nn.Length < 2 || nn.Length > 20)
+        return Results.BadRequest(new { error = "Nickname must be 2..20 chars." });
 
+    var nnLower = nn.ToLower();
+
+    // VARSA DÖN
     var existing = await db.Users
         .AsNoTracking()
-        .FirstOrDefaultAsync(u => u.Nickname.ToLower() == nickname.ToLower());
+        .FirstOrDefaultAsync(u => u.Nickname.ToLower() == nnLower);
 
-    if (existing != null)
-        return Results.Ok(existing);
+    if (existing != null) return Results.Ok(existing);
 
-    var user = new User { Nickname = nickname, CreatedAt = DateTime.UtcNow };
+    // YOKSA OLUŞTUR
+    var user = new User { Nickname = nn, CreatedAt = DateTime.UtcNow };
     db.Users.Add(user);
     await db.SaveChangesAsync();
     return Results.Ok(user);
 });
+
 
 
 
