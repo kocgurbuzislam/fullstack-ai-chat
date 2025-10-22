@@ -205,5 +205,3 @@ Ekrana Anında Gösterim (React/React Native)
 
 ---
 
-
-Bu proje **açık kaynaklıdır** ve yalnızca **akademik / eğitim amaçlı** geliştirilmiştir.
