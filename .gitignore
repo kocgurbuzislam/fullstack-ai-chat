@@ -1,0 +1,10 @@
+# ---- React Native (mobile) ignore ----
+mobile/node_modules/
+mobile/android/.gradle/
+mobile/android/app/build/
+mobile/android/build/
+mobile/ios/Pods/
+mobile/ios/build/
+mobile/.bundle/
+*.apk
+*.aab

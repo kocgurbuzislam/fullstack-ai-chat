@@ -24,7 +24,7 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p => p
     .AllowAnyMethod()
 ));
 
-var app = builder.Build(); 
+var app = builder.Build();
 
 app.UseCors();
 
@@ -130,7 +130,7 @@ app.MapPost("/api/messages", async (AppDb db, IHttpClientFactory f, IConfigurati
     catch (Exception ex)
     {
         Console.WriteLine("[AI] call failed: " + ex.Message);
-        
+
     }
 
     return Results.Ok(m);
