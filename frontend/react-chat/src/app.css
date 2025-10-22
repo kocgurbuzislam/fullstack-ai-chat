@@ -1,16 +1,10 @@
 :root {
   --bg: #0b0f17;
-  /* sayfa arka planı */
   --panel: #121826;
-  /* kart/panel zemin */
   --muted: #94a3b8;
-  /* yardımcı metin */
   --text: #e2e8f0;
-  /* ana metin */
   --brand: #3b82f6;
-  /* aksiyon rengi */
   --border: #1f2937;
-  /* çizgiler */
   --pos: #16a34a;
   --neu: #64748b;
   --neg: #ef4444;
@@ -23,7 +17,9 @@
 html,
 body,
 #root {
-  height: 100%
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -33,14 +29,11 @@ body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif
 }
 
-.chat {
-  width: min(860px, 100%);
-}
-
 .app {
-  margin: 0 auto;
+  margin: 0;
   display: flex;
-  height: 100dvh;
+  height: 100vh;
+  width: 100%;
   max-width: none;
   flex-direction: column;
 }
@@ -49,12 +42,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 12px 24px;
   border-bottom: 1px solid var(--border);
-  background: rgba(18, 24, 38, .7);
+  background: rgba(18, 24, 38, .9);
   position: sticky;
   top: 0;
   backdrop-filter: blur(6px);
+  z-index: 100;
 }
 
 .brand {
@@ -72,7 +66,8 @@ body {
 
 .title {
   font-weight: 700;
-  letter-spacing: .2px
+  letter-spacing: .2px;
+  font-size: 16px;
 }
 
 .logout {
@@ -92,80 +87,55 @@ body {
 
 .main {
   display: flex;
-  justify-content: center;
-  /* ortala */
-  padding: 24px;
-  /* kenarlardan nefes */
+  flex: 1;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.chat {
+  width: 100%;
+  max-width: none;
 }
 
 .panel {
-  height: calc(100dvh - 56px - 32px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  border: none;
+  border-radius: 0;
   overflow: hidden;
   min-height: 0;
 }
 
 .panel.chat {
   width: 100%;
-  max-width: 880px;
-  /* 800–960 arası deneyebilirsin */
-  margin: 0 auto;
-  /* ortala */
-}
-
-.panel.chat .messages {
-  height: calc(100vh - 240px);
-  /* header + input alanını düş */
-  min-height: 460px;
-  /* çok küçük ekranlarda bile dar kalmasın */
-  overflow: auto;
-}
-
-/* 4) İç boşlukları sıkılaştır: baloncuk ve satırlar */
-.messages .row {
-  margin: 8px 0;
-}
-
-/* 12–16 çoksa 8’e indir */
-.bubble {
-  padding: 10px 12px;
-  border-radius: 12px;
-}
-
-.meta {
-  gap: 8px;
-}
-
-/* alt satır etiketleri arası */
-
-.inputBar {
-  margin-top: 12px;
+  max-width: none;
+  margin: 0;
+  flex: 1;
 }
 
 .messages {
   flex: 1;
-  overflow: auto;
-  padding: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.footer {
-  position: sticky;
-  bottom: 0;
-  background: #0c1321;
-  border-top: 1px solid var(--border);
+.panel.chat .messages {
+  height: auto;
+  min-height: 0;
 }
 
 .row {
   display: flex;
   gap: 10px;
-  align-items: flex-end
+  align-items: flex-end;
+  margin: 8px 0;
 }
 
 .me {
@@ -177,13 +147,14 @@ body {
 }
 
 .bubble {
-  max-width: 68%;
+  max-width: 65%;
   background: #0f172a;
   border: 1px solid var(--border);
-  padding: 10px 12px;
+  padding: 10px 14px;
   border-radius: 12px;
-  line-height: 1.35;
+  line-height: 1.4;
   font-size: 14px;
+  word-wrap: break-word;
 }
 
 .bubble.me {
@@ -192,7 +163,7 @@ body {
 
 .meta {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
   margin-top: 6px;
   font-size: 12px;
@@ -204,7 +175,8 @@ body {
   border-radius: 999px;
   border: 1px solid var(--border);
   font-weight: 600;
-  letter-spacing: .2px
+  letter-spacing: .2px;
+  font-size: 11px;
 }
 
 .badge.pos {
@@ -225,12 +197,17 @@ body {
   border-color: color-mix(in oklab, var(--neg) 40%, #000)
 }
 
-.inputBar {
-  position: static;
+.footer {
+  position: sticky;
   bottom: 0;
+  background: #0c1321;
+  border-top: 1px solid var(--border);
+}
+
+.inputBar {
   display: flex;
   gap: 10px;
-  padding: 12px;
+  padding: 16px 24px;
   border-top: 1px solid var(--border);
   background: #0c1321;
 }
@@ -243,6 +220,11 @@ body {
   border-radius: 10px;
   padding: 12px 14px;
   outline: none;
+  font-size: 14px;
+}
+
+.input:focus {
+  border-color: var(--brand);
 }
 
 .send {
@@ -250,27 +232,33 @@ body {
   border: none;
   color: white;
   border-radius: 10px;
-  padding: 0 16px;
+  padding: 0 20px;
   font-weight: 700;
   cursor: pointer;
   transition: .15s;
-  height: 44px
+  height: 44px;
+  min-width: 80px;
 }
 
 .send:hover {
-  filter: brightness(1.08)
+  filter: brightness(1.1)
+}
+
+.send:active {
+  transform: scale(0.98);
 }
 
 .hint {
   font-size: 12px;
   color: var(--muted);
-  padding: 0 12px 12px
+  padding: 0 24px 12px
 }
 
 .empty {
   opacity: .65;
   text-align: center;
-  padding: 48px 12px
+  padding: 48px 12px;
+  color: var(--muted);
 }
 
 .nickWrap {
@@ -292,7 +280,6 @@ body {
   width: 420px;
   max-width: 92%;
   text-align: center;
-  will-change: auto;
 }
 
 .nickCard:hover {
@@ -327,7 +314,6 @@ body {
   border-color: #3b82f6;
 }
 
-
 .nickBtn {
   margin-top: 1.2rem;
   width: 100%;
@@ -346,29 +332,6 @@ body {
   background-color: #2563eb;
 }
 
-/* ========= CHAT GENİŞLİK & YERLEŞİM OVERRIDE ========= */
-
-/* Ana içerik ortada kalsın */
-.main {
-  display: flex;
-  justify-content: center;
-  padding: 24px;
+.nickBtn:active {
+  transform: scale(0.98);
 }
-
-/* .panel'deki olası sabit genişliği chat için ez */
-.main .panel.chat { max-width: 1040px; flex-basis: 1040px; }
-
-/* Mesaj alanı ekranın daha fazlasını kullansın */
-.main .panel.chat .messages {
-  height: calc(100vh - 220px);      /* header + input’u düş */
-  min-height: 520px;                /* çok küçük ekran koruması */
-  padding: 16px 18px;
-}
-
-/* Baloncuklar panel içinde daha geniş olsun */
-.bubble {
-  max-width: 78%;                   /* 68% dar kalıyorsa yükselt */
-}
-
-/* Satırlar arası boşluğu biraz sıkılaştır */
-.messages .row { margin: 8px 0; }
