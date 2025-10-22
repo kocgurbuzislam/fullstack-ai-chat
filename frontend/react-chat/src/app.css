@@ -345,3 +345,35 @@ body {
 .nickBtn:hover {
   background-color: #2563eb;
 }
+
+/* ========= CHAT GENİŞLİK & YERLEŞİM OVERRIDE ========= */
+
+/* Ana içerik ortada kalsın */
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* .panel'deki olası sabit genişliği chat için ez */
+.main .panel.chat {
+  width: 100% !important;          /* sabit genişliği bırakma */
+  max-width: 980px;                 /* masada daha geniş: 880→980 deneyelim */
+  margin: 0 auto;                   /* ortala */
+  flex: 0 1 980px;                  /* flex içinde genişleyebilsin */
+}
+
+/* Mesaj alanı ekranın daha fazlasını kullansın */
+.main .panel.chat .messages {
+  height: calc(100vh - 220px);      /* header + input’u düş */
+  min-height: 520px;                /* çok küçük ekran koruması */
+  padding: 16px 18px;
+}
+
+/* Baloncuklar panel içinde daha geniş olsun */
+.bubble {
+  max-width: 78%;                   /* 68% dar kalıyorsa yükselt */
+}
+
+/* Satırlar arası boşluğu biraz sıkılaştır */
+.messages .row { margin: 8px 0; }
