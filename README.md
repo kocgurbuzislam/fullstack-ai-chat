@@ -126,6 +126,22 @@ python app.py
 
 Bu servis Hugging Face Spaces üzerinde yayınlanmıştır.  
 Girilen metin `transformers` modeli ile analiz edilip JSON formatında sonuç döner.
+Kullanılan model: "cardiffnlp/twitter-roberta-base-sentiment"
+
+## 🧠 AI Model
+
+Uygulamanın duygu analizi (sentiment analysis) kısmında, **Hugging Face** üzerinde barındırılan **CardiffNLP Twitter RoBERTa Base Sentiment** modeli kullanılmıştır.
+
+- **Model:** `cardiffnlp/twitter-roberta-base-sentiment`
+- **Kütüphane:** 🤗 Transformers (Hugging Face)
+- **Yapı:** RoBERTa (BERT türevi, optimized pretraining)
+- **Sınıflar:** `NEGATIVE`, `NEUTRAL`, `POSITIVE`
+- **Veri seti:** Twitter (Cardiff University NLP Group)
+- **API:** FastAPI + Python (`/analyze` endpoint)
+- **Barındırma:** Hugging Face Spaces (`https://kocgurbuz-sentiment-api.hf.space`)
+
+Bu model kısa metinlerdeki duygusal tonu başarılı şekilde tespit eder ve backend servisinde REST API olarak entegre edilmiştir.
+
 
 ---
 
