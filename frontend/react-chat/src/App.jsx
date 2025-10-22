@@ -115,10 +115,7 @@ export default function App() {
       <header className="header">
         <div className="brand">
           <span className="dot" />
-          <div className="title">AI Chat</div>
-          <div style={{ fontSize: 12, color: "#94a3b8", marginLeft: 8 }}>
-            {loading ? "Senkronize ediliyor…" : "Canlı"}
-          </div>
+          <div className="title">Mood Chat</div>
         </div>
         <button
           className="logout"
@@ -131,7 +128,7 @@ export default function App() {
             setLastAt(null);   
           }}
         >
-          Çıkış yap
+         Log Out
         </button>
 
       </header>
@@ -169,13 +166,10 @@ export default function App() {
                 className="input"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder="Bir mesaj yaz..."
+                placeholder="Send a message..."
               />
-              <button className="send" type="submit">Gönder</button>
+              <button className="send" type="submit">Send</button>
             </form>
-            <div className="hint">Enter ile gönder, 3 sn’de bir otomatik senkron.
-
-            </div>
           </div>
 
 
