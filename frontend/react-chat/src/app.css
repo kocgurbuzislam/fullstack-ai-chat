@@ -235,48 +235,72 @@ body {
 }
 
 .nickWrap {
-  display: grid;
-  place-items: center;
-  height: 100%;
-  padding: 24px
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #0f172a; /* karanlık arka plan */
+}
+.nickCard {
+  background: #1e293b;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  width: 380px;
+  max-width: 90%;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.nickCard {
-  width: min(420px, 92%);
-  background: var(--panel);
-  border: 1px solid var(--border);
-  padding: 22px;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, .35)
+.nickCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .nickCard h2 {
-  margin: 0 0 8px
+  color: #fff;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .nickCard p {
-  margin: 0 0 16px;
-  color: var(--muted);
-  font-size: 13px
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
 }
 
 .nickInput {
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: #0a101c;
-  color: var(--text)
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
+.nickInput:focus {
+  border-color: #3b82f6;
+}
+
+
 .nickBtn {
-  margin-top: 12px;
+  margin-top: 1.2rem;
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.8rem;
   border: none;
-  background: var(--brand);
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.nickBtn:hover {
+  background-color: #2563eb;
 }

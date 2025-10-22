@@ -136,7 +136,7 @@ export default function App() {
       <main className="main">
         <section className="panel chat" style={{ minHeight: 420 }}>
           <div ref={listRef} className="messages">
-            {!msgs.length && <div className="empty">Henüz mesaj yok. İlk mesajını gönder.</div>}
+            {!msgs.length && <div className="empty">No messages yet. Start the conversation!</div>}
             {msgs.map((m) => {
               const mine = Number(m.user?.id ?? m.userId) === Number(userId);
               return (
