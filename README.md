@@ -26,7 +26,7 @@ Mobil (React Native) ───┘</br>
                           SQLite DB
 
 
-Veri akışı:
+## Veri akışı:
 
 Kullanıcı mesaj yazar → Backend’e gönderilir
 
