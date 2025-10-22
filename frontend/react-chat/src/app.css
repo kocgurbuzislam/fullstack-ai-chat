@@ -356,12 +356,7 @@ body {
 }
 
 /* .panel'deki olası sabit genişliği chat için ez */
-.main .panel.chat {
-  width: 100% !important;          /* sabit genişliği bırakma */
-  max-width: 980px;                 /* masada daha geniş: 880→980 deneyelim */
-  margin: 0 auto;                   /* ortala */
-  flex: 0 1 980px;                  /* flex içinde genişleyebilsin */
-}
+.main .panel.chat { max-width: 1040px; flex-basis: 1040px; }
 
 /* Mesaj alanı ekranın daha fazlasını kullansın */
 .main .panel.chat .messages {
