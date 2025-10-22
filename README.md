@@ -73,6 +73,18 @@ fullstack-ai-chat/
 
 ---
 
+## Ekran Görüntüleri
+# Web
+<p align="center"> <img width="1916" height="965" alt="image" src="https://github.com/user-attachments/assets/cafa80bd-7657-4e36-918c-2f67e1583fdb" /></p> <p align="center"> <img width="1914" height="974" alt="image" src="https://github.com/user-attachments/assets/912f4d0b-66ea-4d26-a6ec-3c716e2b030a" />
+ </p>
+
+# Mobil
+<p align="center"> ![WhatsApp Görsel 2025-10-22 saat 23 10 11_f2183cfb](https://github.com/user-attachments/assets/141dc8c9-7eb5-4950-a6ec-ae8006c9f533)
+</p> <p align="center"> ![WhatsApp Görsel 2025-10-22 saat 23 10 11_1f2e07d7](https://github.com/user-attachments/assets/59cc503d-ad8d-4b7e-ad49-eda8b8078c40)
+ </p>
+
+
+
 ## 🧱 Kullanılan Teknolojiler
 
 | Katman | Teknoloji |
